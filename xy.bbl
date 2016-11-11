@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{8}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -48,5 +48,25 @@
   \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{{Desjacques}}},
   \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{436}},
   \bibinfo{pages}{540} (\bibinfo{year}{2013}), \eprint{1208.5098}.
+
+\bibitem[{\citenamefont{{Meiksin} and {White}}(1999)}]{1999MNRAS.308.1179M}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{{Meiksin}}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{White}}},
+  \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{308}},
+  \bibinfo{pages}{1179} (\bibinfo{year}{1999}), \eprint{astro-ph/9812129}.
+
+\bibitem[{\citenamefont{{Scoccimarro} et~al.}(1999)\citenamefont{{Scoccimarro},
+  {Zaldarriaga}, and {Hui}}}]{1999ApJ...527....1S}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{{Scoccimarro}}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{Zaldarriaga}}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{{Hui}}},
+  \bibinfo{journal}{\apj} \textbf{\bibinfo{volume}{527}}, \bibinfo{pages}{1}
+  (\bibinfo{year}{1999}), \eprint{astro-ph/9901099}.
+
+\bibitem[{\citenamefont{{Rimes} and {Hamilton}}(2005)}]{2005MNRAS.360L..82R}
+\bibinfo{author}{\bibfnamefont{C.~D.} \bibnamefont{{Rimes}}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~J.~S.} \bibnamefont{{Hamilton}}},
+  \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{360}},
+  \bibinfo{pages}{L82} (\bibinfo{year}{2005}), \eprint{astro-ph/0502081}.
 
 \end{thebibliography}
