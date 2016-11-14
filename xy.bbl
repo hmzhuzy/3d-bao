@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{9}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -68,5 +68,15 @@
   \bibinfo{author}{\bibfnamefont{A.~J.~S.} \bibnamefont{{Hamilton}}},
   \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{360}},
   \bibinfo{pages}{L82} (\bibinfo{year}{2005}), \eprint{astro-ph/0502081}.
+
+\bibitem[{\citenamefont{{Wang} et~al.}(2014)\citenamefont{{Wang}, {Mo}, {Yang},
+  {Jing}, and {Lin}}}]{2014ApJ...794...94W}
+\bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{{Wang}}},
+  \bibinfo{author}{\bibfnamefont{H.~J.} \bibnamefont{{Mo}}},
+  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Yang}}},
+  \bibinfo{author}{\bibfnamefont{Y.~P.} \bibnamefont{{Jing}}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{W.~P.} \bibnamefont{{Lin}}},
+  \bibinfo{journal}{\apj} \textbf{\bibinfo{volume}{794}}, \bibinfo{eid}{94}
+  (\bibinfo{year}{2014}), \eprint{1407.3451}.
 
 \end{thebibliography}

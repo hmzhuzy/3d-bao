@@ -267,8 +267,8 @@ density field $\delta_r$, we decompose the reconstruted field $\delta_r$ as
 \delta_r(k)=b_r(k)\delta_L(k)+n_r(k),
 \eea
 where $b_r(k)=P_{\delta_r\delta_L}(k)/P_{\delta_L}(k)$. 
-Here, $b_r\delta_L$ is completely correlated with the linear field $\delta_L$ 
-and $n_r$ uncorrelated with the linear field $\delta_L$.
+Here, $b_r\delta_L$ is completely correlated with the linear density field 
+$\delta_L$ and $n_r$ uncorrelated with the linear density field $\delta_L$.
 The power spectrum of the reconstructed field can be written as
 \bea
 P_{\delta_r}(k)=b_r^2(k)P_{\delta_L}(k)+P_{n_r}(k),
@@ -352,6 +352,21 @@ field and also much more Gaussian than the original nonlinear density field.
 The new reconstruction method are expected to reduce the correlation in the 
 covariance matrix and increase the information content of the power spectrum
 \cite{1999MNRAS.308.1179M,1999ApJ...527....1S,2005MNRAS.360L..82R}.
+Notice that the values of the reconstructed density field $\delta_r$ are always
+smaller than 3. 
+The compression limiter constrains $\partial x^a/\partial\xi^a\geq0.1$ 
+\cite{1995ApJS..100..269P,1998ApJS..115...19P}.
+The reconstructed density field is given by the negative
+divergence of the estimated nonlinear displacement field
+$\delta_r=-\nabla\cdot\Delta{\bm{x}}=3-\nabla\cdot\bm{x}$,
+where $\nabla\cdot\bm{x}=\partial x^1/\partial\xi^1+\partial x^2/\partial\xi^2
++\partial x^3/\partial\xi^3$. 
+We find the maximum value is $2.7$ for the reconstructed density field.  
+This has confirmed that we have a continuous sequence of 
+nondegenerate triads in the reconstruction. 
+In the 1D case, the maximum value is 1 since we only have one spatial dimension
+in the 1D cosmology \cite{2016arXiv160907041Z}.
+
 
 \begin{figure}[tbp]
 \begin{center}
@@ -361,13 +376,28 @@ covariance matrix and increase the information content of the power spectrum
 \caption{The joint probability distribution function of the reconstructed field 
     $\delta_r$ and linear density field $\delta_L$. We also plot the 
 probability distrbution functions of $\delta_r$ and $\delta_L$. Both fields
-have been Wiener filtered to get converged results.}
+have been Wiener filtered to get converged results. The value of the 
+reconstructed density field is always smaller than 3.}
 \label{fig:pdf}
 \end{figure}
 
-{\it Discussions.}---
-The reconstructed nonlinear displacement can be further ...
-before apply to real data, consider RSD, halo fields, SDSS main samples ...
+{\it Discussions.}---The new reconstruction method reduces the nonlinearities 
+significantly and successfully recovers a lot of linear modes 
+at $k<0.6\ h/\mr{Mpc}$, which is about all the linear BAO information.
+This has significant implications for measuring BAO in the current and future 
+surveys. 
+To apply the new reconstruction method to observations, we need to consider 
+reconstruction from galaxy density fields with redshift space distortions.
+We intend to investigate these in subsequent works. 
+
+The new method is also useful for improving the measurement of redshift space
+distortions. The reconstructed density field is much more linear than the 
+original nonlinear density field. 
+As more nonlinear effects will be removed using the nonlinear displacement, we expect the modeling of the reconstructed density field will be simplified.
+
+ELUCID \cite{2014ApJ...794...94W}?
+The reconstructed nonlinear displacement can be further improved ...?
+
 Peculiar velocity cosmology, predicting the displacement, robust measurement of
 vlomue weighted velocity field, free of sampling artifact, and good at 
 predicting the velocity field from the density field. also important for the
@@ -377,6 +407,7 @@ neutrino mass measurement, nonlinearity is fully exploitted. also important for
 the velocity field reconstruction for measuring the dipole
 
 %=======================================
+
 
 The simulations were performed on the BGQ supercomputer at the SciNet HPC 
 Consortium. SciNet is funded by the Canada Foundation for Innovation under 
