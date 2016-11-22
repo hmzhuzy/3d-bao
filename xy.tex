@@ -1,4 +1,4 @@
-\documentclass[aps,prd,twocolumn,showpacs,superscriptaddress,groupedaddress,nofootinbib]{revtex4}  % for review and submission
+\documentclass[aps,prd,twocolumn,superscriptaddress,groupedaddress,nofootinbib]{revtex4}  % for review and submission
 %\documentclass[aps,preprint,showpacs,superscriptaddress,groupedaddress]{revtex4}  % for double-spaced preprint
 \usepackage{graphicx}  % needed for figures
 \usepackage{dcolumn}   % needed for some tables
@@ -67,10 +67,15 @@ Shanghai Astronomical Observatory, Chinese Academy of Sciences,
 \date{\today}
 
 \begin{abstract}
-We present a new method to reconstruct the primordial (linear) density field
+We propose a new method to reconstruct the primordial (linear) density field
 using the estimated nonlinear displacement field. The divergence of 
 the displacement field gives the reconstructed density field. We solve the 
-nonlinear displacement field ... ... 
+nonlinear displacement field using a multigrid
+iteration scheme and show the reconstruction results.
+The new reconstruction algorithm recovers a lot of linear modes and reduces 
+the effect of nonlinear evolution significantly.
+This will induce a paradigm shift in the study of large-scale structure and 
+open up a new era of precision cosmology.
 \end{abstract}
 
 \pacs{}
@@ -79,23 +84,24 @@ nonlinear displacement field ... ...
 %\section{\label{sec:level1}First-level heading}
 % sections are not used for PRL papers
 
-{\it Introduction.}---
-
-Observations of cosmological large scale structure is a cornerstone in
-modern cosmology.  Ambitious surveys are mapping large swaths of the
-visible universe (CHIME, Tianlai, DESI, PFS, etc).  Precision
-measurements of baryon acoustic oscillations, RSD, FNL, etc, are
-continually improving.  The precision of the measurement is often
-limited by strong non-Gaussianity of the dark matter and galaxy
-density fields on small scales, which prevent a simple mapping to the
+{\it Introduction.}---The observation of large scale structure of the 
+Universe is a cornerstone of modern cosmology.  
+Several ambitious surveys are mapping large swaths of the
+visible universe (e.g. CHIME, DESI, PFS, etc).  
+Precision measurements of the power spectrum and two-point correlation 
+function are continually improving.
+However, the precision of the measurement of baryon acoustic oscillations, 
+redshift space distortions, primordial non-Gaussianity, etc,
+from the two-point statistics is often limited by strong non-Gaussianity
+of the dark matter and galaxy density fields on small scales, which prevent 
+a simple mapping to the
 initial conditions that are predicted by cosmological theories.  The
-%loss of coherence to the initial conditions has been known as
+loss of coherence to the initial conditions has been known as
 mode-mode coupling, information saturation, etc.
-
 Some of the couplings are understood as arising from the coupling of
 large scale linear modes to smaller scale still linear modes
-(e.g. Tides, Supersample variance).  These can be corrected by a
-linear mapping, also known as 'reconstruction' (cite Seo, Padmanabhan,
+(e.g. Tides \cite{2012tides1,2016tides2}, Supersample covariance \cite{2014sc3}).  These can be corrected by a
+linear mapping, also known as ``reconstruction'' \cite{2007bao}(cite Seo, Padmanabhan,
 etc).
 
 Recent work showed that the $z=0$ Lagrangian space non-linear
@@ -108,20 +114,12 @@ combination of the mass ordering coordinate of 1609.07041 with the
 E-mode displacement field, resulting in a unique solution that has a
 comparable reconstruction fidelity as the true E-mode displacement field.
 
-The observed large-scale structure provides ...
-In this Letter, we solve the nonlinear displecement field from the nonlinear 
-density field and present a new method to reconstruct the primordial density
-field and hence the linear BAO information.
-
 The analysis usually uses the density field directly. measure the power spectrum
 However, modeling the small-scale inhomogeneities limits to $k<0.1\ h/\mr{Mpc}$.
 We find the nonlinearities in the displacement field is much more linear than 
 the density field. The correlation of the divergence of the displacement field
 with the primordial (linear) density field is much better than that of the 
-nonlinear density field. The divergence of the reconstructed nonlinear
-displacement gives the reconstructed density field, which is much more linear
-than the nonlinear density field.
-
+nonlinear density field. 
 %=========
 
 {\it Displacement decomposition.}---In the Lagrangian picture of structure 

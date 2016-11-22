@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{18}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -12,18 +12,55 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem[{\citenamefont{{Pen} et~al.}(2012)\citenamefont{{Pen}, {Sheth},
+  {Harnois-Deraps}, {Chen}, and {Li}}}]{2012tides1}
+\bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}},
+  \bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{{Sheth}}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{{Harnois-Deraps}}},
+  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Z.}~\bibnamefont{{Li}}},
+  \bibinfo{journal}{ArXiv e-prints}  (\bibinfo{year}{2012}),
+  \eprint{1202.5804}.
+
+\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{a}})\citenamefont{{Zhu},
+  {Pen}, {Yu}, {Er}, and {Chen}}}]{2016tides2}
+\bibinfo{author}{\bibfnamefont{H.-M.} \bibnamefont{{Zhu}}},
+  \bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{{Yu}}},
+  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Er}}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}},
+  \bibinfo{journal}{\prd} \textbf{\bibinfo{volume}{93}}, \bibinfo{eid}{103504}
+  (\bibinfo{year}{2016}{\natexlab{a}}), \eprint{1511.04680}.
+
+\bibitem[{\citenamefont{{Li} et~al.}(2014)\citenamefont{{Li}, {Hu}, and
+  {Takada}}}]{2014sc3}
+\bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{{Li}}},
+  \bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{{Hu}}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{Takada}}},
+  \bibinfo{journal}{\prd} \textbf{\bibinfo{volume}{90}}, \bibinfo{eid}{103530}
+  (\bibinfo{year}{2014}), \eprint{1408.1081}.
+
+\bibitem[{\citenamefont{{Eisenstein} et~al.}(2007)\citenamefont{{Eisenstein},
+  {Seo}, {Sirko}, and {Spergel}}}]{2007bao}
+\bibinfo{author}{\bibfnamefont{D.~J.} \bibnamefont{{Eisenstein}}},
+  \bibinfo{author}{\bibfnamefont{H.-J.} \bibnamefont{{Seo}}},
+  \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{{Sirko}}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.~N.} \bibnamefont{{Spergel}}},
+  \bibinfo{journal}{\apj} \textbf{\bibinfo{volume}{664}}, \bibinfo{pages}{675}
+  (\bibinfo{year}{2007}), \eprint{astro-ph/0604362}.
+
 \bibitem[{\citenamefont{{McQuinn} and {White}}(2016)}]{2016matt}
 \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{McQuinn}}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{White}}},
   \bibinfo{journal}{\jcap} \textbf{\bibinfo{volume}{1}}, \bibinfo{eid}{043}
   (\bibinfo{year}{2016}), \eprint{1502.07389}.
 
-\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{a}})\citenamefont{{Zhu},
+\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{b}})\citenamefont{{Zhu},
   {Pen}, and {Chen}}}]{2016arXiv160907041Z}
 \bibinfo{author}{\bibfnamefont{H.-M.} \bibnamefont{{Zhu}}},
   \bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}}, \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}},
-  \bibinfo{journal}{ArXiv e-prints}  (\bibinfo{year}{2016}{\natexlab{a}}),
+  \bibinfo{journal}{ArXiv e-prints}  (\bibinfo{year}{2016}{\natexlab{b}}),
   \eprint{1609.07041}.
 
 \bibitem[{\citenamefont{{Pen}}(1995)}]{1995ApJS..100..269P}
@@ -105,14 +142,14 @@
   \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{113}},
   \bibinfo{eid}{131301} (\bibinfo{year}{2014}), \eprint{1311.3422}.
 
-\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{b}})\citenamefont{{Zhu},
+\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{c}})\citenamefont{{Zhu},
   {Pen}, {Chen}, and {Inman}}}]{2016zhm}
 \bibinfo{author}{\bibfnamefont{H.-M.} \bibnamefont{{Zhu}}},
   \bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}},
   \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}}, \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{{Inman}}},
   \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{116}},
-  \bibinfo{eid}{141301} (\bibinfo{year}{2016}{\natexlab{b}}).
+  \bibinfo{eid}{141301} (\bibinfo{year}{2016}{\natexlab{c}}).
 
 \bibitem[{\citenamefont{{Wang} et~al.}(2014)\citenamefont{{Wang}, {Mo}, {Yang},
   {Jing}, and {Lin}}}]{2014ApJ...794...94W}
