@@ -1,4 +1,4 @@
-\documentclass[aps,prd,twocolumn,superscriptaddress,groupedaddress,nofootinbib]{revtex4}  % for review and submission
+\documentclass[aps,prl,twocolumn,showpacs,superscriptaddress,groupedaddress,nofootinbib]{revtex4}  % for review and submission
 %\documentclass[aps,preprint,showpacs,superscriptaddress,groupedaddress]{revtex4}  % for double-spaced preprint
 \usepackage{graphicx}  % needed for figures
 \usepackage{dcolumn}   % needed for some tables
@@ -69,23 +69,13 @@ Shanghai Astronomical Observatory, Chinese Academy of Sciences,
 \begin{abstract}
 We present a direct approach to non-parametrically reconstruct the linear
 density field from an observed non-linear map.  We solve for the unique 
-Displacement potential consistent with the non-linear density and positive definite 
-Coordinate transformation using a multi grid algorithm.  We show that we
-Recover the linear initial conditions up to $k\sim 1$ with minimal computational cost.
+displacement potential consistent with the non-linear density and positive definite 
+coordinate transformation using a multi-grid algorithm.  We show that we
+recover the linear initial conditions up to $k\sim 1\ h/\mr{Mpc}$ with minimal computational cost.
 
 This reconstruction approach generalizes the linear displacement theory to fully non-linear
-Fields, potentially substantially expanding the BAO and RSD information content of dense 
-Large scale structure surveys, including for example SDSS main sample and 21cm intensity mapping.
-
-%We propose a new method to reconstruct the primordial (linear) density field
-%using the estimated nonlinear displacement field. The divergence of 
-%the displacement field gives the reconstructed density field. We solve the 
-%nonlinear displacement field using a multigrid
-%iteration scheme and show the reconstruction results.
-%The new reconstruction algorithm recovers a lot of linear modes and reduces 
-%the effect of nonlinear evolution significantly.
-%This will induce a paradigm shift in the study of large-scale structure and 
-%open up a new era of precision cosmology.
+fields, potentially substantially expanding the BAO and RSD information content of dense 
+large scale structure surveys, including for example SDSS main sample and 21cm intensity mapping.
 \end{abstract}
 
 \pacs{}
@@ -94,49 +84,41 @@ Large scale structure surveys, including for example SDSS main sample and 21cm i
 %\section{\label{sec:level1}First-level heading}
 % sections are not used for PRL papers
 
-{\it Introduction.}---The observation of large scale structure of the 
-Universe is a cornerstone of modern cosmology.  
-Several ambitious surveys are mapping large swaths of the
-visible universe (e.g. CHIME, DESI, PFS, etc).  
-Precision measurements of the power spectrum and two-point correlation 
-function are continually improving.
-However, the precision of the measurement of baryon acoustic oscillations, 
-redshift space distortions, primordial non-Gaussianity, etc,
-from the two-point statistics is often limited by strong non-Gaussianity
+{\it Introduction.}---The observation of cosmological large scale structure 
+is a cornerstone of modern cosmology.  
+Ambitious surveys are mapping large swaths of the
+visible universe (e.g. CHIME \cite{chime}, Tianlai \cite{tianlai}, DESI \cite{desi}, PFS \cite{pfs}, etc).  
+Precision measurements of baryon acoustic oscillations, 
+redshift space distortions, and primordial non-Gaussianity, etc
+are continually improving.
+However, the precision of the measurement is often limited by strong non-Gaussianity
 of the dark matter and galaxy density fields on small scales, which prevent 
 a simple mapping to the
 initial conditions that are predicted by cosmological theories.  The
 loss of coherence to the initial conditions has been known as
 mode-mode coupling, information saturation, etc.
+
 Some of the couplings are understood as arising from the coupling of
 large scale linear modes to smaller scale still linear modes
-(e.g. Tides \cite{2012tides1,2016tides2}, Supersample covariance \cite{2014sc3}).  These can be corrected by a
-linear mapping, also known as ``reconstruction'' \cite{2007bao}(cite Seo, Padmanabhan,
-etc).
+(e.g. cosmic tides \cite{2012tides1,2016tides2,2016tides3}, super-sample covariance \cite{2013sc1,2014sc2,2014sc3}).  These can be corrected by a
+linear mapping, also known as ``reconstruction'' \cite{2007bao}.
 
-Recent work showed that the $z=0$ Lagrangian space non-linear
-displacement potential correlates with the initial linear field (arxiv
-1610.07112) to a $k\sim 2h$/Mpc, about an order of magnitude shorter
-length scale than observed in Eulerian space.  That worked required
+Recent work has showed that the Lagrangian nonlinear
+displacement potential at $z=0$ correlates with the initial linear field 
+to $k\sim 2\ h$/Mpc, about an order of magnitude shorter
+length scale than observed in Eulerian space \cite{2016yu}.  That requires
 knowing the actual displacement of dark matter particles, which in
 practice is not observable.  In this paper we implement the
-combination of the mass ordering coordinate of 1609.07041 with the
-E-mode displacement field, resulting in a unique solution that has a
-comparable reconstruction fidelity as the true E-mode displacement field.
-
-The analysis usually uses the density field directly. measure the power spectrum
-However, modeling the small-scale inhomogeneities limits to $k<0.1\ h/\mr{Mpc}$.
-We find the nonlinearities in the displacement field is much more linear than 
-the density field. The correlation of the divergence of the displacement field
-with the primordial (linear) density field is much better than that of the 
-nonlinear density field. 
+combination of the mass ordering coordinate of \cite{2016arXiv160907041Z} with the
+$E$-mode displacement field, resulting in a unique solution that has a
+comparable reconstruction fidelity as the true $E$-mode displacement field.
 %=========
 
-{\it Displacement decomposition.}---In the Lagrangian picture of structure 
+{\it The E-mode displacement.}---In the Lagrangian picture of structure 
 formation, 
-the displacement field $\bm{s}(\bm{q},\tau)$ fully describes the motion of each mass element. The Eulerian position $\bm{x}$ of a mass element is given by
+the displacement field $\bm{s}(\bm{q},t)$ fully describes the motion of each mass element. The Eulerian position $\bm{x}(\bm{q},t)$ of a mass element is given by
 \bea
-\bm{x}(\bm{q},\tau)=\bm{q}+\bm{s}(\bm{q},\tau),
+\bm{x}(\bm{q},t)=\bm{q}+\bm{s}(\bm{q},t),
 \eea
 where $\bm{q}$ is the initial Lagrangian position of this mass element.
 The displacement field $\bm{s}(\bm{q})$ can be decomposed into a gradient part
@@ -145,24 +127,24 @@ and a curl part,
 \bm{s}(\bm{q})=\bm{s}_E(\bm{q})+\bm{s}_B(\bm{q}),
 \eea
 where $\nabla\times\bm{s}_E=0$ and $\nabla\cdot\bm{s}_B=0$.
-The gradient part can be completely described by a scalar potential,
-while the curl part has two independent components.
-
-In the 1D cosmology, the displacement field has only one component though 
-it is a vector field \cite{2016matt}. 
-This allows us to determine the displacement field 
-from the density field, which is a scalar field \cite{2016arXiv160907041Z}.
-However, the motion has three degrees of freedom in 3D instead of one.
-Since from cosmological observations we only have the density field, we expect 
-to reconstruct the scalar part of the displacement field.
+The $E$-mode displacement can be completely described by a scalar potential,
+while the $B$-mode displacement has two independent components.
+%In the 1D cosmology, the displacement field has only one component though 
+%it is a vector field \cite{2016matt}. 
+%This allows us to determine the displacement field 
+%from the density field, which is a scalar field \cite{2016arXiv160907041Z}.
+%However, the motion has three degrees of freedom in 3D instead of one.
+Since from cosmological observations we only have the density field,
+which is a scalar field, we expect 
+to reconstruct the $E$-mode displacement field.
 
 %=========
 
 {\it Reconstruction algorithm.}---The basic idea is to build a curvilinear 
-coordinate system $\bm{\xi}\equiv(\xi_1,\ \xi_2,\ \xi_3)$, where the mass per
+coordinate system $\bm{\xi}\equiv(\xi_1,\xi_2,\xi_3)$, where the mass per
 volume element is constant. 
 In order to determine the physical position of each lattice point, we need to 
-specify the Cartesian coordinate $\bm{x}(\bm{\xi},\ t)$ of each curvilinear 
+specify the Cartesian coordinate $\bm{x}(\bm{\xi},t)$ of each curvilinear 
 coordinate.
 Since we attemp to follow the potential flow instead of the vorticity, we 
 define a coordinate transformation that is a pure gradient,
