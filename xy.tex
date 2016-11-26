@@ -18,6 +18,7 @@
 \hyphenation{PYTHIA}
 
 \newcommand{\mr}{\mathrm}
+\newcommand{\mc}{\mathcal}
 \newcommand{\tcb}{\textcolor{blue}}
 \newcommand{\bea}{\begin{eqnarray}}
 \newcommand{\eea}{\end{eqnarray}}
@@ -70,7 +71,7 @@ Shanghai Astronomical Observatory, Chinese Academy of Sciences,
 We present a direct approach to non-parametrically reconstruct the linear
 density field from an observed non-linear map.  We solve for the unique 
 displacement potential consistent with the non-linear density and positive definite 
-coordinate transformation using a multi-grid algorithm.  We show that we
+coordinate transformation using a multigrid algorithm.  We show that we
 recover the linear initial conditions up to $k\sim 1\ h/\mr{Mpc}$ with minimal computational cost.
 
 This reconstruction approach generalizes the linear displacement theory to fully non-linear
@@ -129,24 +130,22 @@ and a curl part,
 where $\nabla\times\bm{s}_E=0$ and $\nabla\cdot\bm{s}_B=0$.
 The $E$-mode displacement can be completely described by a scalar potential,
 while the $B$-mode displacement has two independent components.
-%In the 1D cosmology, the displacement field has only one component though 
-%it is a vector field \cite{2016matt}. 
-%This allows us to determine the displacement field 
-%from the density field, which is a scalar field \cite{2016arXiv160907041Z}.
-%However, the motion has three degrees of freedom in 3D instead of one.
 Since from cosmological observations we only have the density field,
 which is a scalar field, we expect 
 to reconstruct the $E$-mode displacement field.
-
 %=========
 
-{\it Reconstruction algorithm.}---The basic idea is to build a curvilinear 
+{\it Reconstruction algorithm.}---The observed matter distribution is rather 
+inhomogeneous due to nonlinear gravitational clustering. 
+However, the density field is homogeneous in the mass coordinate as
+the initial matter distribution.
+The basic idea of reconstrution is to build a curvilinear 
 coordinate system $\bm{\xi}\equiv(\xi_1,\xi_2,\xi_3)$, where the mass per
 volume element is constant. 
 In order to determine the physical position of each lattice point, we need to 
 specify the Cartesian coordinate $\bm{x}(\bm{\xi},t)$ of each curvilinear 
 coordinate.
-Since we attemp to follow the potential flow instead of the vorticity, we 
+Since we attempt to follow the potential flow instead of the vorticity, we 
 define a coordinate transformation that is a pure gradient,
 \bea
 \label{eq:trs}
@@ -156,21 +155,22 @@ where
 \bea
 \Delta x^i\equiv\frac{\partial\phi}{\partial\xi^\nu}\delta^{i\nu}.
 \eea
-Here, $\Delta{x}^i$ is the {\it lattice displacement} and $\phi$ the 
-{\it deformation potential} \cite{1995ApJS..100..269P,1998ApJS..115...19P}. 
+Here, $\phi$ is called the {\it displacement potential}. 
 The new coordinate frame gives the estimated initial Lagrangian coordinates. 
-The difference between these two frames is the estimated nonlinear displacement.
+The difference between these two frames is the estimated nonlinear displacement field.
 Here, Latin indices denote Cartesian coordinate labels $x^i$, while Greek 
 indices denote the curvilinear coordinates $\xi^\alpha$.
 
-There are many possible ways to determine the new coordinate frame. 
-One efficient and robust algorithm is the moving grid approach \cite{1995ApJS..100..269P,1998ApJS..115...19P}.
-This approach is originally introduced for the adaptive particle-mesh $N$-body 
-code \cite{1995ApJS..100..269P} and the moving mesh hydrodynamics code
+The problem simplifies to find the displacement potential, where the density field
+is constant in the curvilinear coordinate system.
+One efficient and robust algorithm is the moving mesh approach, which
+is originally introduced for the adaptive particle-mesh $N$-body 
+algorithm \cite{1995ApJS..100..269P} and the moving mesh hydrodynamics algorithm
 \cite{1998ApJS..115...19P}. 
-The moving grid based simulation algorithm adopts a curvilinear moving grid
-which evolves towards a state of constant mass per grid cell. 
-The evolution of the deformation potential is determined by a linear elliptic
+The moving grid based simulation algorithm adopts a curvilinear moving grid,
+which evolves towards a state of constant mass per grid cell, to maintain constant
+resolution in mass.
+The evolution of the curvilinear moving grid is determined by a linear elliptic
 evolution equation
 \bea
 \label{eq:pde}
@@ -178,16 +178,16 @@ evolution equation
 \eea
 where $e^\mu_i$ is the matrix inverse of the triad $e^i_\mu=\partial x^i/\partial\xi^\mu$, $\sqrt{g}=\mr{det}(\partial x^i/\partial \xi^\alpha)$ and 
 $\Delta\rho=\bar{\rho}-\rho\sqrt{g}$. 
-See Ref. \cite{1995ApJS..100..269P} for a simple physical intepretation of 
+See Ref. \cite{1995ApJS..100..269P} for a simple physical interpretation of 
 Eq. (\ref{eq:pde}).
-The ellpitic equation can be solved using the multigrid algorithm described 
+The ellipitic equation can be solved using the multigrid algorithm described 
 in Ref. \cite{1995ApJS..100..269P}.
 
-Since the displacement from the initial Lagrangian coordinate to the final 
-Eulerian coordinate can be large, the elliptic equation must then be solved 
-iteratively. We obtain the change of the deformation potential 
+Since the displacement from the initial Lagrangian position to the final 
+Eulerian position can be large, the elliptic equation must then be solved 
+perturbatively. We obtain the change of the displacement potential 
 $\Delta\phi=\dot{\phi}\Delta t$ at each time step and then update the density
-field in the new Cartesian coordinate frame.  
+field in the new coordinate frame.  
 The solution is given by 
 \bea
 \phi=\Delta\phi^{(1)}+\Delta\phi^{(2)}+\Delta\phi^{(3)}+\cdots
@@ -197,18 +197,20 @@ We also implement the smoothing and limiting schemes to guarantee the triad
 $e^\mu_i$ is positive definite \cite{1995ApJS..100..269P,1998ApJS..115...19P},
 from which we have the relation $\partial x^a/\partial\xi^a>0$ (no summation).
 From this equality, it follows that each Cartesian coordinate increases monotonically as a function of its corresponding curvilinear coordinate.
-Then, the negative divergence of the estimated displacement gives the 
+The displacement potential consistent with the
+positive definite coordinate transformation is unique.
+Then, the divergence of the estimated displacement gives the 
 reconstructed density field 
 \bea
-\delta_r(\bm{\xi})=-\nabla_{\bm{\xi}}\cdot\Delta\bm{x}(\bm{\xi})
-=-\nabla^2_{\bm{\xi}}\phi(\bm{\xi}).
+\delta_r(\bm{\xi})=-\nabla\cdot\Delta\bm{x}(\bm{\xi})
+=-\nabla^2\phi(\bm{\xi}),
 \eea
 where $\bm{\xi}$ is the estimated initial Lagrangian coordinate.
 In the case that particles follow a irrotational potential flow and no shell
 crossing happens, the reconstructed displacement is exact up to a global 
 spatial translation.
 However, shell crossing happens in the nonlinear regime. This reconstruction
-algorithm gives an effective displacement.
+algorithm gives an approximate solution.
 %=======================================
 
 
@@ -221,38 +223,38 @@ In the analysis, we use the output at $z=0$. Mass densities are computed
 on $512^3$ grids. 
 The nonlinear reconstruction code is based on the {\tt CALDEFP} subroutine from 
 the moving mesh hydrodynamics code \cite{1998ApJS..115...19P}.
-The nonilnear reconstruction code solves the deformation potential iteratively.
+The nonlinear reconstruction code solves the displacement potential iteratively.
 We test convergence by comparing results from different time steps and 
-find the reconstrution converges after 1500 time steps for the nonlinear 
-density field on $512^3$ grids. 
+find the reconstruction converges after 1500 time steps for the nonlinear 
+density field on $512^3$ grids.
 We also scale the initial density field at $z=100$ by the linear growth factor
 to get the linear density field at $z=0$.
 
 \begin{figure}[tbp]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{map0512-0128_i1500_.eps}
+\includegraphics[width=0.48\textwidth]{map0512-0128_i1500.eps}
 \end{center}
 \vspace{-0.7cm}
 \caption{The nonlinear density field at $z=0$ and the projected deformed grid 
-from reconstruction. The grid lines show good correlation with the density 
-field.}
+from reconstruction. 
+The grid lines show strong correlation with the filamentary structures.}
 \label{fig:den}
 \end{figure}
 
 Figure \ref{fig:den} shows a slice of the nonlinear density field. 
-We also overplot the deformed grid on the density field. The grid becomes 
+We also plot the deformed grid on the density field. The grid becomes 
 denser in the higher density region and sparser in the lower density region.
-The grid lines also show strong correlation with the filementary structures.
+The grid lines also show strong correlation with the filamentary structures.
 The difference between the regular grid and the deformed grid is the estimated
-displacement field, whose divergence gives the reconstructed linear density 
+displacement field and its divergence gives the reconstructed linear density 
 field. The nonlinear density field $\delta(\bm{x})$ is given on the Eulerian 
 position $\bm{x}$, while the reconstructed density field $\delta_r(\bm{\xi})$ 
 is computed on the estimated Lagrangian position $\bm{\xi}$. Due to the 
 limiting and smoothing schemes we use, the grid never overlaps itself as in 
 Refs. \cite{1995ApJS..100..269P,1998ApJS..115...19P}.
 
-To conveniently quantify the linear information $\delta_L$ in the reconstructed
-density field $\delta_r$, we decompose the reconstruted field $\delta_r$ as
+To directly quantify the linear information in the reconstructed
+density field, we decompose the reconstructed density field $\delta_r$ as
 \bea
 \delta_r(k)=b_r(k)\delta_L(k)+n_r(k),
 \eea
@@ -261,22 +263,22 @@ Here, $b_r\delta_L$ is completely correlated with the linear density field
 $\delta_L$ and $n_r$ uncorrelated with the linear density field $\delta_L$.
 The power spectrum of the reconstructed field can be written as
 \bea
-P_{\delta_r}(k)=b_r^2(k)P_{\delta_L}(k)+P_{n_r}(k),
+P_{\delta_r}(k)=\mc{D}_r(k)P_{\delta_L}(k)+P_{n_r}(k),
 \eea
-where $b_r^2$ is the nonlinear damping factor. 
+where $\mc{D}_r=b_r^2$ is the nonlinear damping factor. 
 For the nonlinear density field, we also have
 \bea
-P_{\delta}(k)=b^2(k)P_{\delta_L}(k)+P_{n}(k),
+P_{\delta}(k)=\mc{D}(k)P_{\delta_L}(k)+P_{n}(k),
 \eea
-where $b(k)=P_{\delta\delta_L}(k)/P_{\delta_L}(k)$. 
+where $\mc{D}=b^2$ and $b=P_{\delta\delta_L}/P_{\delta_L}$. 
 In Fig. \ref{fig:ps}, we plot the linear components and the noise terms of the
-nonlinear and reconstructed fields. The noise part dominates over the linear 
+nonlinear and reconstructed power spectra. The noise part dominates over the linear 
 signal at $k\gtrsim0.6\ \mr{Mpc}/h$, indicating that all BAO peaks can be 
-measured to an unprecented accuracy.
+measured to unprecedented accuracy.
 
 \begin{figure}[tbp]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{fb.eps}
+\includegraphics[width=0.48\textwidth]{f2.eps}
 \end{center}
 \vspace{-0.7cm}
 \caption{The linear power spectrum (dashed line), the linear parts of the
@@ -286,12 +288,12 @@ the noise parts of the nonlinear (thick dotted line) and reconstructed
 For visual comparisions, we rescale both the linear and noise parts by
 $f^2=P_{\delta_L}/P_{\delta}$ and $f^2_r=P_{\delta_L}/P_{\delta_r}$ for the nonlinear and reconstructed fields, respectively.
 The noise terms dominate over the signals at
-$k\gtrsim0.1\ \mr{Mpc}^{-1}$ for the nonlinear field and $k\gtrsim0.6\ \mr{Mpc}^{-1}$
+$k\gtrsim0.1\ h/\mr{Mpc}$ for the nonlinear field and $k\gtrsim0.6\ h/\mr{Mpc}$
 for the reconstructed field.}
 \label{fig:ps}
 \end{figure}
 
-Reconstruction reduces the nonlinear damping $b^2(k)$ as well as the
+Reconstruction reduces the nonlinear damping $\mc{D}(k)$ as well as the
 noise term $P_{n}(k)$. To quantify the overall performance, we can use the
 cross-correlation coefficient
 \bea
@@ -311,13 +313,13 @@ This is also as expected since the nonlinear evolution in 1D is more
 significant than the 3D case \cite{2016matt}.
 We also show the cross-correlation coefficient of $\delta_E$ with $\delta_L$,
 where $\delta_E(\bm{q})=-\nabla\cdot \bm{s}_E(\bm{q})$ is the negative 
-divergence of the real displacement from simulation.
+divergence of the real $E$-mode displacement from simulation.
 It is still hard to recover linear modes at $k\gtrsim1h/\mr{Mpc}$, since some information has been irreversibly lost in nonlinear evolution. 
 
 
 \begin{figure}[tbp]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{fa.eps}
+\includegraphics[width=0.48\textwidth]{f3.eps}
 \end{center}
 \vspace{-0.7cm}
 \caption{
@@ -339,19 +341,19 @@ W(k)=\frac{P_{\delta_L}(k)}{P_{\delta_L}(k)+P_{n_r}(k)/b_r^2(k)}
 to both the reconstructed and linear fields to get the converged results.
 The reconstructed density field is well correlated with the linear density 
 field and also much more Gaussian than the original nonlinear density field.
-The new reconstruction method are expected to reduce the correlation in the 
-covariance matrix and increase the information content of the power spectrum
+The new reconstruction method are expected to reduce the correlation between
+different $k$-bins and increase the information content
 \cite{1999MNRAS.308.1179M,1999ApJ...527....1S,2005MNRAS.360L..82R}.
-Notice that the values of the reconstructed density field $\delta_r$ are always
+Notice that the values of the reconstructed density $\delta_r$ are always
 smaller than 3. 
 The compression limiter constrains $\partial x^a/\partial\xi^a\geq0.1$ 
 \cite{1995ApJS..100..269P,1998ApJS..115...19P}.
 The reconstructed density field is given by the negative
-divergence of the estimated nonlinear displacement field
+divergence of the estimated nonlinear displacement field,
 $\delta_r=-\nabla\cdot\Delta{\bm{x}}=3-\nabla\cdot\bm{x}$,
 where $\nabla\cdot\bm{x}=\partial x^1/\partial\xi^1+\partial x^2/\partial\xi^2
 +\partial x^3/\partial\xi^3$. 
-We find the maximum value is $2.7$ for the reconstructed density field.  
+We find the maximum value is $2.7$ for the reconstructed densities.  
 This has confirmed that we have a continuous sequence of 
 nondegenerate triads in the reconstruction. 
 In the 1D case, the maximum value is 1 since we only have one spatial dimension
@@ -360,62 +362,66 @@ in the 1D cosmology \cite{2016arXiv160907041Z}.
 
 \begin{figure}[tbp]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{pdfwf-b.eps}
+\includegraphics[width=0.48\textwidth]{pdfwf.eps}
 \end{center}
 \vspace{-0.7cm}
-\caption{The joint probability distribution function of the reconstructed field 
+\caption{The joint PDF of the reconstructed field 
     $\delta_r$ and linear density field $\delta_L$. We also plot the 
-probability distrbution functions of $\delta_r$ and $\delta_L$. Both fields
+PDFs of $\delta_r$ and $\delta_L$. Both fields
 have been Wiener filtered to get converged results. The value of the 
 reconstructed density field is always smaller than 3.}
 \label{fig:pdf}
 \end{figure}
 
-{\it Discussions.}---The new reconstruction method reduces the nonlinearities 
-significantly and successfully recovers a lot of linear modes 
-at $k<0.6\ h/\mr{Mpc}$, which is about all the linear BAO information.
-This has significant implications for measuring BAO in the current and future 
-surveys, especially for volume-limited galaxy samples. 
+{\it Discussions.}---The Lagrangian BAO reconstruction algorithm involves displacing 
+individual objects according to the linear displacement that is computed from the observed
+galaxy distribution under certain model assumptions (the fiducial cosmology, galaxy bias, 
+growth rate, etc) \cite{2007bao,2015marcel}.
+The results depend on the assumed fiducial model and must be tested against different 
+parameter choices, which is computationally expensive \cite{2012nikhil}.
+The reconstruction of the displacement potential consistent with the nonlinear density
+and positive definite coordinate transformation is a purely mathematical problem with no
+cosmological dynamics involved. 
+The implementation of the new reconstruction algorithm does not require any model assumptions.
+The new algorithm recovers the linear density modes to $k\sim0.6\ h/\mr{Mpc}$, 
+which include about all the BAO information. 
+This has significant implications for the measurement of BAO in dense large scale structure
+surveys such as SDSS main sample and 21 cm intensity mapping.
 To apply the new reconstruction method to observations, we need to consider 
-reconstruction from galaxy density fields with redshift space distortions.
-The modelling of the reconstructed density field will also be simplified since
-less nonlinear effects are involved in the current method.
+reconstruction from galaxies or halos with redshift space distortions.
 We intend to investigate these in subsequent works. 
 
-The new method is also useful for improving the measurement of redshift space
-distortions. The nonlinear displacement is much more linear than
-the nonlinear density field. 
-This also simplifies the modelling of RSD, which is usually
-limited by nonlinearities \cite{2013PhRvD..87f3526Z}.
-The current method to reconstruct velocity field from the observed density 
-fieldis derived from the linearized continuity equation. 
-The nonlinear density field is usually smoothed on the linear scale
+The observed position of a mass element will be shifted by its peculiar
+velocity along the line of sight, which corresponds to a simple additive offset of
+the displacement field. The displacement field solved from the observed density field
+automatically includes the additive offset. 
+Since much less nonlinearities involved in the displacement potential, the modeling of RSD
+will be improved significantly.
+
+Most of methods to reconstruct the velocity field from the observed density 
+field are based on the linearized continuity equation.
+The observed nonlinear density field is usually smoothed on the linear scale
 ($\sim10\ \mr{Mpc}/h$) to make the linear approximation valid.
 We can also reconstruct the velocity field from the estimated displacement 
 field.
 This requires a detailed study of the correlation between the displacement 
 field and the velocity field, which will be presented in future.
 
-Neutrinos are expect to suppress the growth of structure on scales below the 
-neutrino thermal free-streaming scale \cite{1980bond,1997hu}.
+Neutrinos are expected to suppress the growth of structure on scales below the 
+neutrino thermal free-streaming scale \cite{1980bond}. 
 It is interesting to study the effect of neutrinos on the Lagrangian space 
-clustering. 
-The new method is also crucial for measuring the dark matter-neutrino cross 
-correlation dipole \cite{2014zhm,2016zhm}. 
-
-
-ELUCID \cite{2014ApJ...794...94W}?
-The reconstructed nonlinear displacement can be further improved ...?
+clustering, where the nonlinear evolution is less substantial. 
+The reconstruction method is also crucial for measuring the dark matter-neutrino cross 
+correlation dipole in Lagrangian space \cite{2014zhm,2016zhm}. 
 %=======================================
 
-
-The simulations were performed on the BGQ supercomputer at the SciNet HPC 
+The simulations are performed on the BGQ supercomputer at the SciNet HPC 
 Consortium. SciNet is funded by the Canada Foundation for Innovation under 
 the auspices of Compute Canada, the Government of Ontario, the Ontario Research 
 Fund Research Excellence, and the University of Toronto.
 We acknowledge the support of the Chinese MoST 863 program under Grant 
 No. 2012AA121701, the CAS Science Strategic Priority Research Program 
-XDB09000000, the NSFC under Grant No. 11373030, IAS at Tsinghua University, 
+XDB09000000, the NSFC under Grant No. 11373030 and No. 11403071, IAS at Tsinghua University, 
  and NSERC.
 The Dunlap Institute is funded through an endowment established by the David Dunlap family and the University of Toronto.
 Research at the Perimeter Institute is supported by the Government of Canada

@@ -3,7 +3,7 @@ bibtex xy
 latex xy.tex
 latex xy.tex
 pdflatex xy.tex
-#dvipdf xy.dvi 
+#dvipdf xy.dvi
 rm xy.aux
 rm xy.blg
 rm xy.dvi

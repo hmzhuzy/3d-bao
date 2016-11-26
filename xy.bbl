@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{25}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -194,13 +194,27 @@
   \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{360}},
   \bibinfo{pages}{L82} (\bibinfo{year}{2005}), \eprint{astro-ph/0502081}.
 
-\bibitem[{\citenamefont{{Zhang} et~al.}(2013)\citenamefont{{Zhang}, {Pan}, and
-  {Zheng}}}]{2013PhRvD..87f3526Z}
-\bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{{Zhang}}},
-  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{{Pan}}}, \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{{Zheng}}},
-  \bibinfo{journal}{\prd} \textbf{\bibinfo{volume}{87}}, \bibinfo{eid}{063526}
-  (\bibinfo{year}{2013}), \eprint{1207.2722}.
+\bibitem[{\citenamefont{{Schmittfull} et~al.}(2015)\citenamefont{{Schmittfull},
+  {Feng}, {Beutler}, {Sherwin}, and {Chu}}}]{2015marcel}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{Schmittfull}}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{{Feng}}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{{Beutler}}},
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{{Sherwin}}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{M.~Y.} \bibnamefont{{Chu}}},
+  \bibinfo{journal}{\prd} \textbf{\bibinfo{volume}{92}}, \bibinfo{eid}{123522}
+  (\bibinfo{year}{2015}), \eprint{1508.06972}.
+
+\bibitem[{\citenamefont{{Padmanabhan} et~al.}(2012)\citenamefont{{Padmanabhan},
+  {Xu}, {Eisenstein}, {Scalzo}, {Cuesta}, {Mehta}, and {Kazin}}}]{2012nikhil}
+\bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{{Padmanabhan}}},
+  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Xu}}},
+  \bibinfo{author}{\bibfnamefont{D.~J.} \bibnamefont{{Eisenstein}}},
+  \bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{{Scalzo}}},
+  \bibinfo{author}{\bibfnamefont{A.~J.} \bibnamefont{{Cuesta}}},
+  \bibinfo{author}{\bibfnamefont{K.~T.} \bibnamefont{{Mehta}}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{{Kazin}}},
+  \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{427}},
+  \bibinfo{pages}{2132} (\bibinfo{year}{2012}), \eprint{1202.0090}.
 
 \bibitem[{\citenamefont{{Bond} et~al.}(1980)\citenamefont{{Bond}, {Efstathiou},
   and {Silk}}}]{1980bond}
@@ -209,16 +223,6 @@
   \bibnamefont{and} \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{{Silk}}},
   \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{45}},
   \bibinfo{pages}{1980} (\bibinfo{year}{1980}).
-
-\bibitem[{\citenamefont{{Hu} et~al.}(1998)\citenamefont{{Hu}, {Eisenstein}, and
-  {Tegmark}}}]{1997hu}
-\bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{{Hu}}},
-  \bibinfo{author}{\bibfnamefont{D.~J.} \bibnamefont{{Eisenstein}}},
-  \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{{Tegmark}}},
-  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{80}},
-  \bibinfo{pages}{5255} (\bibinfo{year}{1998}),
-  \eprint{arXiv:astro-ph/9712057}.
 
 \bibitem[{\citenamefont{{Zhu} et~al.}(2014)\citenamefont{{Zhu}, {Pen}, {Chen},
   {Inman}, and {Yu}}}]{2014zhm}
@@ -238,15 +242,5 @@
   \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{{Inman}}},
   \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{116}},
   \bibinfo{eid}{141301} (\bibinfo{year}{2016}{\natexlab{c}}).
-
-\bibitem[{\citenamefont{{Wang} et~al.}(2014)\citenamefont{{Wang}, {Mo}, {Yang},
-  {Jing}, and {Lin}}}]{2014ApJ...794...94W}
-\bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{{Wang}}},
-  \bibinfo{author}{\bibfnamefont{H.~J.} \bibnamefont{{Mo}}},
-  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Yang}}},
-  \bibinfo{author}{\bibfnamefont{Y.~P.} \bibnamefont{{Jing}}},
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{W.~P.} \bibnamefont{{Lin}}},
-  \bibinfo{journal}{\apj} \textbf{\bibinfo{volume}{794}}, \bibinfo{eid}{94}
-  (\bibinfo{year}{2014}), \eprint{1407.3451}.
 
 \end{thebibliography}
