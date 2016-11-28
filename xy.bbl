@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{22}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -215,32 +215,5 @@
   \bibnamefont{and} \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{{Kazin}}},
   \bibinfo{journal}{\mnras} \textbf{\bibinfo{volume}{427}},
   \bibinfo{pages}{2132} (\bibinfo{year}{2012}), \eprint{1202.0090}.
-
-\bibitem[{\citenamefont{{Bond} et~al.}(1980)\citenamefont{{Bond}, {Efstathiou},
-  and {Silk}}}]{1980bond}
-\bibinfo{author}{\bibfnamefont{J.~R.} \bibnamefont{{Bond}}},
-  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{{Efstathiou}}},
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{{Silk}}},
-  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{45}},
-  \bibinfo{pages}{1980} (\bibinfo{year}{1980}).
-
-\bibitem[{\citenamefont{{Zhu} et~al.}(2014)\citenamefont{{Zhu}, {Pen}, {Chen},
-  {Inman}, and {Yu}}}]{2014zhm}
-\bibinfo{author}{\bibfnamefont{H.-M.} \bibnamefont{{Zhu}}},
-  \bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}},
-  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}},
-  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{{Inman}}}, \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{{Yu}}},
-  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{113}},
-  \bibinfo{eid}{131301} (\bibinfo{year}{2014}), \eprint{1311.3422}.
-
-\bibitem[{\citenamefont{{Zhu} et~al.}(2016{\natexlab{c}})\citenamefont{{Zhu},
-  {Pen}, {Chen}, and {Inman}}}]{2016zhm}
-\bibinfo{author}{\bibfnamefont{H.-M.} \bibnamefont{{Zhu}}},
-  \bibinfo{author}{\bibfnamefont{U.-L.} \bibnamefont{{Pen}}},
-  \bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{{Chen}}}, \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{{Inman}}},
-  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{116}},
-  \bibinfo{eid}{141301} (\bibinfo{year}{2016}{\natexlab{c}}).
 
 \end{thebibliography}

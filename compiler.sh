@@ -2,8 +2,8 @@ latex xy.tex
 bibtex xy
 latex xy.tex
 latex xy.tex
-pdflatex xy.tex
-#dvipdf xy.dvi
+dvips xy.dvi
+ps2pdf xy.ps
 rm xy.aux
 rm xy.blg
 rm xy.dvi
