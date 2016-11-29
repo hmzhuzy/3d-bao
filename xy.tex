@@ -180,7 +180,7 @@ where $e^\mu_i$ is the matrix inverse of the triad $e^i_\mu=\partial x^i/\partia
 $\Delta\rho=\bar{\rho}-\rho\sqrt{g}$. 
 See Ref. \cite{1995ApJS..100..269P} for a simple physical interpretation of 
 Eq. (\ref{eq:pde}).
-The ellipitic equation can be solved using the multigrid algorithm described 
+The elliptic equation can be solved using the multigrid algorithm described 
 in Ref. \cite{1995ApJS..100..269P}.
 
 Since the displacement from the initial Lagrangian position to the final 
@@ -190,7 +190,7 @@ $\Delta\phi=\dot{\phi}\Delta t$ at each time step and then update the density
 field in the new coordinate frame.  
 The solution is given by 
 \bea
-\phi=\Delta\phi^{(1)}+\Delta\phi^{(2)}+\Delta\phi^{(3)}+\cdots
+\phi=\Delta\phi^{(1)}+\Delta\phi^{(2)}+\Delta\phi^{(3)}+\cdots,
 \eea
 where $\Delta\phi^{(i)}$ is the result from the $i$th iteration. 
 We also implement the smoothing and limiting schemes to guarantee the triad 
@@ -206,7 +206,7 @@ reconstructed density field
 =-\nabla^2\phi(\bm{\xi}),
 \eea
 where $\bm{\xi}$ is the estimated initial Lagrangian coordinate.
-In the case that particles follow a irrotational potential flow and no shell
+In the case that particles follow an irrotational potential flow and no shell
 crossing happens, the reconstructed displacement is exact up to a global 
 spatial translation.
 However, shell crossing happens in the nonlinear regime. This reconstruction
@@ -232,7 +232,7 @@ to get the linear density field at $z=0$.
 
 \begin{figure}[tbp]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{map0512-0128_i1500.eps}
+\includegraphics[width=0.48\textwidth]{map0512-0128_i1500_.eps}
 \end{center}
 \vspace{-0.7cm}
 \caption{The nonlinear density field at $z=0$ and the projected deformed grid 
@@ -278,17 +278,7 @@ be recovered from the present day density field.  Even the densest local
 universe galaxy surveys such as the SDSS main sample become Poisson
 noise dominated at this scale, opening up the potential of recovering
 cosmic information including BAO and potentially redshift-space
-distortion down to the Poisson noise limit.  We note that the
-non-linear displacement field correlates with the initial density
-field to even smaller Lagrangian scales.  This displacement field is
-not actually observable, but presumably serves as a hard upper bound
-on information that could plausibily be recovered from a non-linear
-density field, which is scrambled by shell crossing.  Several
-improvements to this reconstruction approach may improve the
-correlation further, for example using more grid cells or iteratively
-improving the density field match.  We leave this for future studies,
-since it would not likely improve the reconstruction from current
-galaxy surveys. 
+distortion down to the Poisson noise limit.  
 
 \begin{figure}[tbp]
 \begin{center}
@@ -299,7 +289,7 @@ galaxy surveys.
 nonlinear (thick solid line) and reconstructed (thin solid line) power spectra,
 the noise parts of the nonlinear (thick dotted line) and reconstructed
 (thin dotted line) power spectra.
-For visual comparisions, we rescale both the linear and noise parts by
+For visual comparisons, we rescale both the linear and noise parts by
 $f^2=P_{\delta_L}/P_{\delta}$ and $f^2_r=P_{\delta_L}/P_{\delta_r}$ for the nonlinear and reconstructed fields, respectively.
 The noise terms dominate over the signals at
 $k\gtrsim0.1\ h/\mr{Mpc}$ for the nonlinear field and $k\gtrsim0.6\ h/\mr{Mpc}$
@@ -327,8 +317,20 @@ This is also as expected since the nonlinear evolution in 1D is more
 significant than the 3D case \cite{2016matt}.
 We also show the cross-correlation coefficient of $\delta_E$ with $\delta_L$,
 where $\delta_E(\bm{q})=-\nabla\cdot \bm{s}_E(\bm{q})$ is the negative 
-divergence of the real $E$-mode displacement from simulation.
-It is still hard to recover linear modes at $k\gtrsim1h/\mr{Mpc}$, since some information has been irreversibly lost in nonlinear evolution. 
+divergence of the real nonlinear displacement from simulation.
+
+We note that the
+non-linear displacement field correlates with the initial density
+field to even smaller Lagrangian scales.  This displacement field is
+not actually observable, but presumably serves as a hard upper bound
+on information that could plausibly be recovered from a non-linear
+density field, which is scrambled by shell crossing.  Several
+improvements to this reconstruction approach may improve the
+correlation further, for example using more grid cells or iteratively
+improving the density field match.  We leave this for future studies,
+since it would not likely improve the reconstruction from current
+galaxy surveys. 
+%It is still hard to recover linear modes at $k\gtrsim1h/\mr{Mpc}$, since some information has been irreversibly lost in nonlinear evolution. 
 
 
 \begin{figure}[tbp]
@@ -387,18 +389,6 @@ reconstructed density field is always smaller than 3.}
 \label{fig:pdf}
 \end{figure}
 
-%\begin{figure}[tbp]
-%\begin{center}
-%\includegraphics[width=0.48\textwidth]{f5.eps}
-%\end{center}
-%\vspace{-0.7cm}
-%\caption{The PDFs of the three eigenvalues of the triad $e^i_\mu$, 
-%with $\lambda_1\le\lambda_2\le\lambda_3$. 
-%The .}
-%\label{fig:pdf}
-%\end{figure}
-
-
 {\it Discussions.}---The Lagrangian BAO reconstruction algorithm involves displacing 
 individual objects according to the linear displacement that is computed from the observed
 galaxy distribution under certain model assumptions (the fiducial cosmology, galaxy bias, 
@@ -409,10 +399,12 @@ The reconstruction of the displacement potential consistent with the nonlinear d
 and positive definite coordinate transformation is a purely mathematical problem with no
 cosmological dynamics involved. 
 The implementation of the new reconstruction algorithm does not require any model assumptions.
+
 The new algorithm recovers the linear density modes to $k\sim0.6\ h/\mr{Mpc}$, 
-which include about all the BAO information. 
-This has significant implications for the measurement of BAO in dense large scale structure
-surveys such as SDSS main sample and 21 cm intensity mapping.
+which is about all the BAO information.
+This has significant implications for the measurement of BAO in dense 
+large-scale structure surveys such as the SDSS main sample and 21cm intensity
+mapping.
 To apply the new reconstruction method to observations, we need to consider 
 reconstruction from galaxies or halos with redshift space distortions.
 We intend to investigate these in subsequent works. 
